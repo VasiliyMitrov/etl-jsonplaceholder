@@ -1,6 +1,6 @@
 """
 Tests for the ETL pipeline.
-All HTTP calls are mocked — no real network requests.
+All HTTP calls are replaced with stubs - no real network requests.
 """
 
 import sqlite3
@@ -12,7 +12,7 @@ import pytest
 from etl.db import get_connection, get_counts, init_db, upsert_comments, upsert_posts, upsert_users
 from etl.__main__ import run
 
-# ── Fixtures ──────────────────────────────────────────────────────────────────
+# Fixtures 
 
 USERS = [
     {
@@ -50,7 +50,7 @@ def db_path(tmp_path: Path) -> Path:
     return tmp_path / "test.db"
 
 
-# ── Unit tests: db ────────────────────────────────────────────────────────────
+# Unit tests: db 
 
 def test_upsert_users_inserts(db):
     n = upsert_users(db, USERS)
@@ -116,7 +116,7 @@ def test_get_counts(db):
     assert counts == {"users": 1, "posts": 1, "comments": 1}
 
 
-# ── Integration test: full run ─────────────────────────────────────────────────
+# Integration test: full run
 
 def test_full_run_idempotent(db_path):
     """Two consecutive runs must produce the same row counts."""
