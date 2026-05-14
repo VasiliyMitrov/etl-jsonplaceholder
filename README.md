@@ -1,6 +1,6 @@
 # ETL: JSONPlaceholder → SQLite
 
-Пайплайн загружает данные из публичного REST API [jsonplaceholder.typicode.com](https://jsonplaceholder.typicode.com/) — пользователи, посты, комментарии — и сохраняет в локальную SQLite-базу.
+Пайплайн загружает данные из публичного REST API [jsonplaceholder.typicode.com](https://jsonplaceholder.typicode.com/) - пользователи, посты, комментарии - и сохраняет в локальную SQLite-базу.
 
 Повторный запуск безопасен: дублей не будет. При каждом запуске в логах видно сколько записей было до и стало после.
 
@@ -88,8 +88,8 @@ users
 ├── email     TEXT
 ├── phone     TEXT
 ├── website   TEXT
-├── company   TEXT     (название компании)
-└── address   TEXT     (улица, город)
+├── company   TEXT     
+└── address   TEXT     
 
 posts
 ├── id        INTEGER  PK
@@ -125,7 +125,7 @@ comments
 2024-01-15 10:00:02 [INFO]   comments    fetched=500  db_before=0    db_after=500
 ```
 
-При повторном запуске `db_before` равен `db_after` — данные обновились, новых строк нет.
+При повторном запуске `db_before` равен `db_after` - данные обновились, новых строк нет.
 
 ---
 
@@ -142,7 +142,7 @@ pytest
 pytest --cov=etl --cov-report=term-missing
 ```
 
-Тесты не делают реальных HTTP-запросов — вместо обращения к API используются заглушки с фиксированными данными. Каждый тест работает с изолированной временной БД.
+Тесты не делают реальных HTTP-запросов - вместо обращения к API используются заглушки с фиксированными данными. Каждый тест работает с изолированной временной БД.
 
 ---
 
