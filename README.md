@@ -10,7 +10,7 @@
 
 ```bash
 git clone <repo_url>
-cd etl
+cd etl-jsonplaceholder
 
 python -m venv .venv
 source .venv/bin/activate      # Windows: .venv\Scripts\activate
